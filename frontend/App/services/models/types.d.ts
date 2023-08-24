@@ -1,9 +1,11 @@
 interface ICategory {
+  _id: string;
   name: string;
   image: string;
 }
 
 interface IDish {
+  _id: string;
   name: string;
   shortDescription: string;
   price: number;
@@ -11,6 +13,7 @@ interface IDish {
 }
 
 interface IRestaurant {
+  _id: string;
   name: string;
   shortDescription: string;
   image: string;
@@ -23,6 +26,7 @@ interface IRestaurant {
 }
 
 interface IFeaturedCategory {
+  _id: string;
   title: string;
   shortDescription: string;
   restaurants: IRestaurant[];

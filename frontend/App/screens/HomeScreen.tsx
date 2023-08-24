@@ -9,6 +9,7 @@ import {
 import React from "react";
 import AndroidSafeArea from "../components/AndroidSafeAreaView";
 
+
 const HomeScreen = () => {
   return (
     <View style={AndroidSafeArea}>

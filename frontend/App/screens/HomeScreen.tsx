@@ -1,9 +1,17 @@
-import { View, Text } from "react-native";
+import {
+  View,
+  Text,
+  ViewStyle,
+  StyleSheet,
+  Platform,
+  StatusBar,
+} from "react-native";
 import React from "react";
+import AndroidSafeArea from "../components/AndroidSafeAreaView";
 
 const HomeScreen = () => {
   return (
-    <View className="flex-1 items-center justify-center">
+    <View style={AndroidSafeArea}>
       <Text className="text-red-500 underline font-bold text-lg">
         Hello World!
       </Text>

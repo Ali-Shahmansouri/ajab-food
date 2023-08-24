@@ -12,7 +12,7 @@ import AndroidSafeArea from "../components/AndroidSafeAreaView";
 const HomeScreen = () => {
   return (
     <View style={AndroidSafeArea}>
-      <Text className="text-red-500 underline font-bold text-lg">
+      <Text className="text-lg font-bold text-red-500 underline">
         Hello World!
       </Text>
     </View>

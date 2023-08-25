@@ -1,23 +1,12 @@
-import {
-  View,
-  Text,
-  ViewStyle,
-  StyleSheet,
-  Platform,
-  StatusBar,
-  Image,
-  SafeAreaView,
-  TextInput,
-  ScrollView,
-} from "react-native";
+import { View, Image, SafeAreaView, ScrollView } from "react-native";
 import React, { useState, useEffect, useCallback } from "react";
 import AndroidSafeArea from "../components/AndroidSafeAreaView";
 import { fetchAllFeaturedCategories } from "../services/request";
 import { AntDesign, Entypo, MaterialIcons } from "@expo/vector-icons";
-import * as SplashScreen from "expo-splash-screen";
 import AppText from "../components/AppText";
 import Categories from "../components/Categories";
 import AppTextInput from "../components/AppInputText";
+import FeaturedRow from "../components/FeaturedRow";
 
 const HomeScreen = () => {
   const [featuredCategories, setFeaturedCategories] = useState<
@@ -90,6 +79,15 @@ const HomeScreen = () => {
       {/* Body */}
       <ScrollView>
         <Categories />
+        {featuredCategories?.map((fcat) => (
+          <FeaturedRow
+            key={fcat._id}
+            id={fcat._id}
+            title={fcat.title}
+            desc={fcat.shortDescription}
+            restaurants={fcat.restaurants}
+          />
+        ))}
       </ScrollView>
     </SafeAreaView>
   );

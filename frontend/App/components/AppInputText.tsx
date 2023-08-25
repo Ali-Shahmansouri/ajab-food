@@ -34,6 +34,9 @@ const AppTextInput = ({
     }
     prepare();
   }, []);
+  if (!isFontLoaded) {
+    return null;
+  }
   return (
     <TextInput
       className={Classes}

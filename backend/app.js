@@ -17,6 +17,11 @@ app.use(
   express.static(path.join(__dirname, "uploads", "Dishes"))
 );
 
+app.use(
+  "/uploads/Categories/",
+  express.static(path.join(__dirname, "uploads", "Categories"))
+);
+
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 

@@ -5,6 +5,7 @@ const categoriesRouter = express.Router();
 
 categoriesRouter
   .route("/")
-  .post(uploader("Categories").single("image"), categoriesController.create);
+  .post(uploader("Categories").single("image"), categoriesController.create)
+  .get(categoriesController.getAll);
 
 module.exports = categoriesRouter;

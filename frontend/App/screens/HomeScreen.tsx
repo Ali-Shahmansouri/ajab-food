@@ -16,6 +16,8 @@ import { fetchAllFeaturedCategories } from "../services/request";
 import { AntDesign, Entypo, MaterialIcons } from "@expo/vector-icons";
 import * as SplashScreen from "expo-splash-screen";
 import AppText from "../components/AppText";
+import Categories from "../components/Categories";
+import AppTextInput from "../components/AppInputText";
 
 const HomeScreen = () => {
   const [featuredCategories, setFeaturedCategories] = useState<
@@ -74,11 +76,10 @@ const HomeScreen = () => {
           />
         </View>
         <View className="flex-1 flex-row items-center justify-end gap-x-2 bg-gray-200 py-2 pr-2">
-          <TextInput
-            placeholder="رستوران ها و آشپزخانه ها "
-            className="font-vazir flex-1"
-            textAlign="right"
-            keyboardType="default"
+          <AppTextInput
+            placeHolder="رستوران ها و آشپزخانه ها "
+            Classes="font-vazir flex-1"
+            keyBoardType="default"
           />
           <View className="">
             <AntDesign name="search1" size={24} color="gray" />
@@ -88,7 +89,7 @@ const HomeScreen = () => {
 
       {/* Body */}
       <ScrollView>
-        
+        <Categories />
       </ScrollView>
     </SafeAreaView>
   );

@@ -1,18 +1,28 @@
 import { NavigationContainer } from "@react-navigation/native";
-import { HomeScreen } from "./App/screens";
+import { HomeScreen, RestaurantScreen } from "./App/screens";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
+export type RootStackParams = {
+  Home: undefined;
+  Restaurant: IRestaurant;
+};
+
 export default function App() {
-  const Stack = createNativeStackNavigator();
+  const RootStack = createNativeStackNavigator<RootStackParams>();
   return (
     <NavigationContainer>
-      <Stack.Navigator>
-        <Stack.Screen
+      <RootStack.Navigator>
+        <RootStack.Screen
           name="Home"
           component={HomeScreen}
           options={{ headerShown: false }}
         />
-      </Stack.Navigator>
+        <RootStack.Screen
+          name="Restaurant"
+          component={RestaurantScreen}
+          options={{ headerShown: false }}
+        />
+      </RootStack.Navigator>
     </NavigationContainer>
   );
 }

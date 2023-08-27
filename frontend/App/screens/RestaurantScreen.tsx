@@ -6,7 +6,7 @@ import {
   Image,
   TouchableOpacity,
 } from "react-native";
-import React from "react";
+import React, { useEffect } from "react";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import { RootStackParams } from "../../App";
 import AndroidSafeAreaView from "../components/AndroidSafeAreaView";
@@ -16,11 +16,14 @@ import AppText from "../components/AppText";
 import DishRow from "../components/DishRow";
 import env from "../../env";
 import BasketIcon from "../components/BasketIcon";
+import { useAppDispatch } from "../store/store";
+import { setRestaurant } from "../store/features/restaurantSlice";
 
 type Props = NativeStackScreenProps<RootStackParams, "Restaurant">;
 
 const RestaurantScreen = ({ route }: Props) => {
   const navigation = useNavigation();
+  const dispatch = useAppDispatch();
   const {
     _id,
     address,
@@ -33,6 +36,11 @@ const RestaurantScreen = ({ route }: Props) => {
     rating,
     shortDescription,
   } = route.params;
+
+  useEffect(() => {
+    dispatch(setRestaurant(route.params));
+  }, [_id]);
+
   return (
     <>
       <BasketIcon />

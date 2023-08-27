@@ -2,6 +2,9 @@ import { View, TouchableOpacity } from "react-native";
 import React from "react";
 import { useAppSelector } from "../store/store";
 import AppText from "./AppText";
+import { useNavigation } from "@react-navigation/native";
+import { NativeStackNavigationProp } from "@react-navigation/native-stack";
+import { RootStackParams } from "../../App";
 
 const BasketIcon = () => {
   const items = useAppSelector((state) => state.basket.items);
@@ -9,11 +12,17 @@ const BasketIcon = () => {
     state.basket.items.reduce((total, item) => (total += item.price), 0),
   );
 
+  const navigation =
+    useNavigation<NativeStackNavigationProp<RootStackParams>>();
+
   if (items.length === 0) return null;
 
   return (
     <View className="absolute bottom-10 z-50 w-full">
-      <TouchableOpacity className="mx-5 flex-row items-center justify-between rounded-lg bg-[#00CCBB] p-4">
+      <TouchableOpacity
+        className="mx-5 flex-row items-center justify-between rounded-lg bg-[#00CCBB] p-4"
+        onPress={() => navigation.navigate("Basket")}
+      >
         <AppText Classes="text-lg font-vazirBold text-white">
           {basketTotal.toLocaleString()} تومان
         </AppText>

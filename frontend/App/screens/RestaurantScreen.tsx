@@ -14,6 +14,7 @@ import { useNavigation } from "@react-navigation/native";
 import { AntDesign, MaterialIcons, Entypo } from "@expo/vector-icons";
 import AppText from "../components/AppText";
 import DishRow from "../components/DishRow";
+import env from "../../env";
 
 type Props = NativeStackScreenProps<RootStackParams, "Restaurant">;
 
@@ -38,7 +39,7 @@ const RestaurantScreen = ({ route }: Props) => {
           <Image
             className="h-56 w-full bg-gray-300 p-4"
             source={{
-              uri: `http://192.168.137.1:8000/uploads/Restaurants/${image}`,
+              uri: `${env.EXPO_PUBLIC_API_URL}uploads/Restaurants/${image}`,
             }}
           />
           <TouchableOpacity

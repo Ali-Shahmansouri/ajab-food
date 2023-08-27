@@ -1,7 +1,8 @@
 import axios from "axios";
+import env from "../../../env";
 
 const customRequest = axios.create({
-  baseURL: "http://192.168.137.1:8000/api/",
+  baseURL: `${env.EXPO_PUBLIC_API_URL}api/`,
 });
 
 export default customRequest;

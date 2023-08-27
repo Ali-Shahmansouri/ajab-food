@@ -2,9 +2,28 @@ import { View, Text, TouchableOpacity, Image } from "react-native";
 import React, { useState } from "react";
 import { AntDesign } from "@expo/vector-icons";
 import AppText from "./AppText";
+import { useAppDispatch, useAppSelector } from "../store/store";
+import { addToBasket, removeFromBasket } from "../store/features/basketSlice";
+import env from "../../env";
 
 const DishRow = ({ _id, image, name, price, shortDescription }: IDish) => {
   const [isPressed, setIsPressed] = useState(false);
+
+  const dispatch = useAppDispatch();
+  const items = useAppSelector((state) =>
+    state.basket.items.filter((i) => i._id === _id),
+  );
+
+  const addItemToBasket = () => {
+    dispatch(addToBasket({ _id, image, name, price, shortDescription }));
+  };
+
+  const removeItemFromBasket = () => {
+    if (!(items.length > 0)) {
+      dispatch(removeFromBasket({ id: _id }));
+    }
+  };
+
   return (
     <>
       <TouchableOpacity
@@ -24,7 +43,7 @@ const DishRow = ({ _id, image, name, price, shortDescription }: IDish) => {
               }}
               className="h-20 w-20 bg-gray-300 p-4"
               source={{
-                uri: `http://192.168.137.1:8000/uploads/Dishes/${image}`,
+                uri: `${env.EXPO_PUBLIC_API_URL}uploads/Dishes/${image}`,
               }}
             />
           </View>
@@ -42,22 +61,25 @@ const DishRow = ({ _id, image, name, price, shortDescription }: IDish) => {
 
       {isPressed && (
         <View className="flex-row items-center bg-white px-4 pb-3">
-          <TouchableOpacity>
+          <TouchableOpacity
+            disabled={!items.length}
+            onPress={removeItemFromBasket}
+          >
             <View>
               <AntDesign
                 name="minuscircle"
                 size={30}
-                color={[].length > 0 ? "#00CCBB" : "gray"}
+                color={items.length > 0 ? "#00CCBB" : "gray"}
               />
             </View>
           </TouchableOpacity>
           <AppText Classes="mx-2">5</AppText>
-          <TouchableOpacity>
+          <TouchableOpacity onPress={addItemToBasket}>
             <View>
               <AntDesign
                 name="pluscircle"
                 size={30}
-                color={[].length > 0 ? "#00CCBB" : "gray"}
+                color={items.length > 0 ? "#00CCBB" : "gray"}
               />
             </View>
           </TouchableOpacity>

@@ -6,6 +6,7 @@ import { Ionicons } from "@expo/vector-icons";
 import AppText from "./AppText";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import { RootStackParams } from "../../App";
+import env from "../../env";
 
 const RestaurantCard = ({
   _id,
@@ -42,7 +43,7 @@ const RestaurantCard = ({
         className="h-36 w-full rounded-sm"
         style={{ minWidth: 256 }}
         source={{
-          uri: `http://192.168.137.1:8000/uploads/Restaurants/${image}`,
+          uri: `${env.EXPO_PUBLIC_API_URL}uploads/Restaurants/${image}`,
         }}
       />
       <View className="px-3 pb-4">

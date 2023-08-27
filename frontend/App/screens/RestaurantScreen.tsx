@@ -15,6 +15,7 @@ import { AntDesign, MaterialIcons, Entypo } from "@expo/vector-icons";
 import AppText from "../components/AppText";
 import DishRow from "../components/DishRow";
 import env from "../../env";
+import BasketIcon from "../components/BasketIcon";
 
 type Props = NativeStackScreenProps<RootStackParams, "Restaurant">;
 
@@ -34,6 +35,7 @@ const RestaurantScreen = ({ route }: Props) => {
   } = route.params;
   return (
     <>
+      <BasketIcon />
       <ScrollView style={AndroidSafeAreaView}>
         <View className="relative">
           <Image

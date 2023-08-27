@@ -1,5 +1,10 @@
 import { NavigationContainer } from "@react-navigation/native";
-import { BasketScreen, HomeScreen, RestaurantScreen } from "./App/screens";
+import {
+  BasketScreen,
+  HomeScreen,
+  PreparingOrderScreen,
+  RestaurantScreen,
+} from "./App/screens";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { store } from "./App/store/store";
 import { Provider } from "react-redux";
@@ -8,6 +13,7 @@ export type RootStackParams = {
   Home: undefined;
   Restaurant: IRestaurant;
   Basket: undefined;
+  PreparingOrder: undefined;
 };
 
 export default function App() {
@@ -30,6 +36,11 @@ export default function App() {
             name="Basket"
             component={BasketScreen}
             options={{ presentation: "modal", headerShown: false }}
+          />
+          <RootStack.Screen
+            name="PreparingOrder"
+            component={PreparingOrderScreen}
+            options={{ headerShown: false, presentation: "fullScreenModal" }}
           />
         </RootStack.Navigator>
       </Provider>

@@ -132,7 +132,10 @@ const BasketScreen = () => {
             <AppText Classes="font-vazir">قیمت تمام شده</AppText>
           </View>
 
-          <TouchableOpacity className="rounded-lg bg-[#00CCBB] p-4">
+          <TouchableOpacity
+            className="rounded-lg bg-[#00CCBB] p-4"
+            onPress={() => navigation.navigate("PreparingOrder")}
+          >
             <AppText Classes="font-vazirBold text-white text-center text-lg">
               ثبت سفارش
             </AppText>

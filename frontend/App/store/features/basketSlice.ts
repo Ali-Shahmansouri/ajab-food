@@ -8,7 +8,7 @@ const initialState: basketState = {
   items: [],
 };
 
-export const basketSlice = createSlice({
+export const BasketSlice = createSlice({
   name: "basket",
   initialState,
   reducers: {
@@ -24,5 +24,5 @@ export const basketSlice = createSlice({
   },
 });
 
-export default basketSlice.reducer;
-export const { addToBasket, removeFromBasket } = basketSlice.actions;
+export default BasketSlice.reducer;
+export const { addToBasket, removeFromBasket } = BasketSlice.actions;

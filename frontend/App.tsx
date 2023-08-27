@@ -1,6 +1,7 @@
 import { NavigationContainer } from "@react-navigation/native";
 import {
   BasketScreen,
+  DeliveryScreen,
   HomeScreen,
   PreparingOrderScreen,
   RestaurantScreen,
@@ -14,6 +15,7 @@ export type RootStackParams = {
   Restaurant: IRestaurant;
   Basket: undefined;
   PreparingOrder: undefined;
+  Delivery: undefined;
 };
 
 export default function App() {
@@ -40,6 +42,11 @@ export default function App() {
           <RootStack.Screen
             name="PreparingOrder"
             component={PreparingOrderScreen}
+            options={{ headerShown: false, presentation: "fullScreenModal" }}
+          />
+          <RootStack.Screen
+            name="Delivery"
+            component={DeliveryScreen}
             options={{ headerShown: false, presentation: "fullScreenModal" }}
           />
         </RootStack.Navigator>

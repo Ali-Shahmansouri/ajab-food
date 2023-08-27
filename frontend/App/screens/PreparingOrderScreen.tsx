@@ -11,6 +11,16 @@ const PreparingOrderScreen = () => {
   const navigation =
     useNavigation<NativeStackNavigationProp<RootStackParams>>();
 
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      navigation.navigate("Delivery");
+    }, 4000);
+
+    return () => {
+      timer;
+    };
+  }, []);
+
   return (
     <SafeAreaView
       style={AndroidSafeAreaView}

@@ -8,7 +8,7 @@ interface ITextProps {
 }
 
 const customFonts = {
-  vzr: require("../../assets/fonts/Vazirmatn-Bold.ttf"),
+  vzr: require("../../assets/fonts/Vazirmatn[wght].ttf"),
   vzr_bold: require("../../assets/fonts/Vazirmatn-Bold.ttf"),
   vzr_semiBold: require("../../assets/fonts/Vazirmatn-SemiBold.ttf"),
 };

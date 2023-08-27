@@ -1,12 +1,12 @@
 import { View, Image, SafeAreaView, ScrollView } from "react-native";
 import React, { useState, useEffect, useCallback } from "react";
-import AndroidSafeArea from "../components/AndroidSafeAreaView";
 import { fetchAllFeaturedCategories } from "../services/request";
 import { AntDesign, Entypo, MaterialIcons } from "@expo/vector-icons";
 import AppText from "../components/AppText";
 import Categories from "../components/Categories";
 import AppTextInput from "../components/AppInputText";
 import FeaturedRow from "../components/FeaturedRow";
+import AndroidSafeAreaView from "../components/AndroidSafeAreaView";
 
 const HomeScreen = () => {
   const [featuredCategories, setFeaturedCategories] = useState<
@@ -21,14 +21,13 @@ const HomeScreen = () => {
     try {
       const data = await fetchAllFeaturedCategories();
       setFeaturedCategories(data);
-      console.log(data);
     } catch (error) {
       console.log(error);
     }
   }
 
   return (
-    <SafeAreaView style={AndroidSafeArea} className="bg-white">
+    <SafeAreaView style={AndroidSafeAreaView} className="bg-white">
       <View className="flex-row items-center justify-between px-4 py-3">
         <View>
           <AntDesign name="user" size={35} color="#00CCBB" />
@@ -77,7 +76,11 @@ const HomeScreen = () => {
       </View>
 
       {/* Body */}
-      <ScrollView>
+      <ScrollView
+        contentContainerStyle={{
+          paddingBottom: 200,
+        }}
+      >
         <Categories />
         {featuredCategories?.map((fcat) => (
           <FeaturedRow

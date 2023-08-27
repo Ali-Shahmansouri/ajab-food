@@ -41,7 +41,6 @@ const BasketScreen = () => {
       return results;
     }, initialGroupedItems);
     setGroupedItemsInBasket(groupedItems);
-    console.log(groupedItems);
   }, [items]);
 
   return (
@@ -95,7 +94,7 @@ const BasketScreen = () => {
                 </TouchableOpacity>
                 <View className="flex-row items-center">
                   <AppText Classes="text-gray-600 font-vazir">
-                    {items[0]?.price} تومان
+                    {items[0]?.price.toLocaleString()} تومان
                   </AppText>
                   <AppText Classes="ml-4 font-vazir">{items[0]?.name}</AppText>
                   <Image
@@ -113,21 +112,21 @@ const BasketScreen = () => {
         <View className="mt-5 space-y-4 bg-white p-5">
           <View className="flex-row justify-between">
             <AppText Classes="text-gray-400 font-vazir">
-              {basketTotal} تومان
+              {basketTotal.toLocaleString()} تومان
             </AppText>
             <AppText Classes="text-gray-400 font-vazir">قیمت سفارش ها</AppText>
           </View>
 
           <View className="flex-row justify-between">
             <AppText Classes="text-gray-400 font-vazir">
-              {DELIVERY_FEE} تومان
+              {DELIVERY_FEE.toLocaleString()} تومان
             </AppText>
             <AppText Classes="text-gray-400 font-vazir">هزینه ارسال</AppText>
           </View>
 
           <View className="flex-row justify-between">
             <AppText Classes="font-vazir">
-              {DELIVERY_FEE + basketTotal} تومان
+              {(DELIVERY_FEE + basketTotal).toLocaleString()} تومان
             </AppText>
             <AppText Classes="font-vazir">قیمت تمام شده</AppText>
           </View>

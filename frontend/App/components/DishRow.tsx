@@ -53,7 +53,7 @@ const DishRow = ({ _id, image, name, price, shortDescription }: IDish) => {
               {shortDescription}
             </AppText>
             <AppText Classes="mt-2 text-gray-400 font-vazir">
-              {price} تومان
+              {price.toLocaleString()} تومان
             </AppText>
           </View>
         </View>

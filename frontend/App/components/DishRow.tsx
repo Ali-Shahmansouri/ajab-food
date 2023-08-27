@@ -19,7 +19,7 @@ const DishRow = ({ _id, image, name, price, shortDescription }: IDish) => {
   };
 
   const removeItemFromBasket = () => {
-    if (!(items.length > 0)) {
+    if (items.length > 0) {
       dispatch(removeFromBasket({ id: _id }));
     }
   };
@@ -73,7 +73,7 @@ const DishRow = ({ _id, image, name, price, shortDescription }: IDish) => {
               />
             </View>
           </TouchableOpacity>
-          <AppText Classes="mx-2">5</AppText>
+          <AppText Classes="mx-2">{items.length}</AppText>
           <TouchableOpacity onPress={addItemToBasket}>
             <View>
               <AntDesign
